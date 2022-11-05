@@ -1,0 +1,115 @@
+     
+	 inscription client : http://localhost:3000/createClient
+	  methode : post
+	  
+			{
+			"nom" : "Pierre",
+			"prenom" : "Dube",
+			"password" : "Password",
+			"courriel" : "pierreDube@cgodin.ca",
+			"addresse" : "123 Rue Quebec"
+
+			} 
+			
+	     modifier profil client : http://localhost:3000/updateClient/17
+		 mehode : put 
+				 {
+					"nom" : "Pierre modifie",
+					"prenom" : "Dube",
+					"password" : "Password",
+					"courriel" : "pierreDube@cgodin.ca",
+					"addresse" : "1233 Rue Quebec3"
+
+		} 
+				 
+	 
+	 
+	 Tous les produit : http://localhost:3000/getAllProducts
+	 
+	 
+	 Film : http://localhost:3000/getProductCategorie/F001
+		 (INF: Informatique : http://localhost:3000/getProductSubCategorie/INF
+		  ("LIT", "Littérature : http://localhost:3000/getProductSubCategorie/LIT
+		  ("GEO", "Géographie" : http://localhost:3000/getProductSubCategorie/GEO
+	 
+	 
+
+	 Livre : http://localhost:3000/getProductCategorie/F001
+	 	("SCF", "Sciences Fictions :  http://localhost:3000/getProductSubCategorie/SCF
+		  ("COM", "Comédie" :  http://localhost:3000/getProductSubCategorie/COM
+		  ("DRA", "Drame et Action" :  http://localhost:3000/getProductSubCategorie/DRA
+	 
+	 
+	 jeux video : http://localhost:3000/getProductCategorie/J003
+	    ("PLA", "Playstation :  http://localhost:3000/getProductSubCategorie/PLA
+		  ("XBO", "Xbox" :  http://localhost:3000/getProductSubCategorie/XBO
+		  ("NIN", "Nintendo :  http://localhost:3000/getProductSubCategorie/NIN
+		  
+		  
+		  
+	// /Ajouter la méthode pour modifier un produit	  
+	      http://localhost:3000//updateProduct/
+	
+	
+	
+	//  Afficher la liste des commandes des clients
+	
+	           http://localhost:3000/getAllOrders
+			   
+   // chercher une commande : 
+         http://localhost:3000/getOrder/1
+			   
+	
+	
+  // approuveCommande:  http://localhost:3000/updateEtatCommmande/123
+   
+   {
+     
+        "EtatCommande": "Approuve"
+  
+    }
+	
+	
+	
+	
+	
+	// updateCommande
+	 {
+        "clientID": "1",
+        "dateCommande": "2015-11-27T05:00:00.000Z",
+        "EtatCommande": "Approuve"
+  
+    }
+	
+	
+	
+	approvissionement : http://localhost:3000/updateStock/1
+	permettre d'approvisionner
+	
+	
+	
+	{
+"gestionnnaireID" : 1,
+"fourniseurID" : 1
+"dateApprov " : "2015-11-27T05:00:00.000Z"
+"quantiteApprov" : 150
+
+} 
+
+
+creer inventaire 
+
+	{
+"produitID" : 1,
+"quantiteStocke" : 1
+"quantiteSeuil" : 50
+
+} 
+
+
+	   
+
+		
+	 
+	 
+	 
