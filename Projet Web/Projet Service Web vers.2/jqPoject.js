@@ -1,56 +1,31 @@
-/*
-function validerForme() {
-
-  //document.oneInscription.visibility=false
-  var login = document.forms["frmIdentification"].elements["txtLogin"];
-  var pw = document.forms["frmIdentification"].elements["txtPass"];
-  var formNomPrenom = document.forms["frmIdentification"];
-  var nomPrenomTxt = formNomPrenom.querySelector("#idNomPrenom");
-
-  if (login.value != "user" && login.value != "") {
-    document.getElementById("blankMsgLogin").innerHTML = "login non valide";
-  }
-  //else document.getElementById("blankMsgLogin").innerHTML = "";  
-
-  if (pw.value != "1234" && pw.value != "") {
-    document.getElementById("blankMsgPw").innerHTML = "Mot de passe non valide";
-  }
-
-
-  if (login.value == "user" && pw.value == "1234") { //alert("Connection reussie")
-    document.getElementById("zoneLogin").style.display = "none";
-
-    document.getElementById("btnInscription").style.display = "none";
-    document.getElementById("btnSubmit").style.display = "none";
-    document.getElementById("zoneAcceuil").style.display = "block";
-
-    //document.getElementById("zoneInscription").style.display="block";
-
-    // document.oneInscr iption.visibility=true
-  }
-
-
-}*/
-
-
-
-
+var isInit = true;
 
 $(document).ready(function () {
 
-  $(init);
 
-  function init() {
+  if (isInit) {
+    $(init);
 
-    $("#zoneLogin").show();
-    $("#zoneAdministrateur").hide();
-    $("#zoneInscription").hide();
-    $("#idZoneAffichage").hide();
-    $("#zoneAcceuil").hide();
-    $("#zonePanier").hide();
+    function init() {
+
+      $("#zoneLogin").show();
+      $("#zoneAdministrateur").hide();
+      $("#zoneInscription").hide();
+      $("#idZoneAffichage").hide();
+      $("#zoneAcceuil").hide();
+      $("#zonePanier").hide();
+
+      //Gestion produit
+      $("#zoneModificationProduit").hide();
+      $("#zoneSuppressionProduit").hide();
+      $("#zoneListeProduit").hide();
+      $("#zoneNouveauProduit").hide();
+      $("#zoneMenuProduit").hide();
 
 
 
+    }
+    isInit = false;
   }
 
   $("#btnSubmit").click(function () {
@@ -84,7 +59,7 @@ $(document).ready(function () {
     else {
 
       if (user == "admin" && pass == "admin") {
-        alert("is a valid admin")
+
         $("#zoneLogin").hide();
         $("#zoneAdministrateur").show();
 
@@ -95,10 +70,71 @@ $(document).ready(function () {
   });
 
 
-  $("#bregisterbtn").click(function () {
-    $("#zoneLogin").hide();
-    $("#zoneInscription").show();
-  })
+
+
+
+
+
+  $("#menu").on('menuselect', function () {
+    alert('Select event Triggered!');
+  });
+
+
+  $(".submenu").menu({
+    blur: function (event, ui) {
+      $('#display').html(" <b>Moved From: </b>"
+        + ui.item.text());
+    }
+  });
+
+
+  $("#newProduct").click(function () {
+    $("#zoneNouveauProduit").show();
+  });
+
+
+  $("#zoneNouveauProduitBtn").click(function () {
+
+    var descriptionProduit = $("#txtDescriptionN").val();
+    var imageProduit = $("#txtImageN").val();
+    var prixProduit = $("#txtPrixN").val();
+    var detailProduit = $("#txtDetailN").val();
+    alert(descriptionProduit + " " + imageProduit + " " + prixProduit + " " + detailProduit)
+    $.ajax({
+      contentType: "application/json; charset =utf-8",
+      processData: false,
+      url: "http://localhost:3000/createProduct",
+
+      data: JSON.stringify({
+        description: descriptionProduit,
+        image: imageProduit,
+        prix: prixProduit,
+        details: descriptionProduit
+      }),
+      method: "post",
+      dataType: "json",
+
+      success: function (data) {
+        $("#txtDescriptionN").val("");
+        $("#txtImageN").val("");
+        $("#txtPrixN").val("");
+        $("#txtDetailN").val("");
+        alert("Produit enregistré");
+      },
+      error: function (error) {
+        alert("Error: Produit non enregistré" + error);
+      }
+    });
+
+
+
+
+  });
+
+
+
+
+
 
 
 });
